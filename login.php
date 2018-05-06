@@ -1,21 +1,27 @@
 <?php
-require 'connection.php';
+require_once 'connection.php';
 
-// username and password sent from form 
-$username = $_POST['username']; 
-$password = $_POST['password'];
 
-$sql = 'SELECT * FROM users WHERE username="' + $username + '" AND password="' + $password + '";
-$result = mysqli_query($conn, $sql);
+if (isset($_POST['username']) && isset($_POST['username'])) {
+    $username = $_POST['username']; 
+    $password = $_POST['password'];
 
-$count = mysqli_num_rows($result);
+    $sql = 'SELECT * FROM users WHERE username="' + $username + '" AND password="' + $password + '"';
+    $result = mysqli_query($conn, $sql);
 
-if ($count) {
-    header('Location: /?page=index');
-} else {
-    header('Location: /login.html?msg=failed');
+    $count = mysqli_num_rows($result);
+
+    if ($count) {
+        $_SESSION['loggedin'] = true;
+        // TODO : Add if admin
+        $_SESSION['admin'] = false;
+        header('Location: /?page=index');
+        exit;
+    } else {
+        header('Location: /login.php?msg=failed');
+        exit;
+    }
 }
-
 ?>
 <!DOCTYPE html>
 <html>

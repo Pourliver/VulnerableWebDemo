@@ -1,15 +1,20 @@
 <?php
 //lol
+session_start();
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $servername = "localhost";
 $username = "secure_user";
 $password = "UlTRa_S3Cr3t_P4Ssw0RD";
 
-// Create connection
+/*
 $conn = new mysqli($servername, $username, $password);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
+*/
 ?> 
