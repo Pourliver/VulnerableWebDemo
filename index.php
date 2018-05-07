@@ -3,7 +3,7 @@ require_once 'connection.php';
 
 /*
 if (!$_SESSION['loggedin']) {
-    header("Location: /login.php");    
+    header("Location: /login.php");
     exit;
 }
 */

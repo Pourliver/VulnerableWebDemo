@@ -27,7 +27,7 @@ if (isset($_POST['username']) && isset($_POST['username'])) {
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Index</title>
+    <title>Login</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@ if (isset($_POST['username']) && isset($_POST['username'])) {
         <button class="submit" type="submit">Login</button>
         <?php
             if (isset($_GET["msg"]) && $_GET["msg"] == 'failed') {
-            echo "Wrong Username / Password";
+                echo "Wrong Username / Password";
             }
         ?>
     </form>    

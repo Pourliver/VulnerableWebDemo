@@ -1,5 +1,5 @@
 <?php
-//lol
+//FLAG{fil3iNclu5i0nL0V3sPHPf1lTeRs}
 session_start();
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
