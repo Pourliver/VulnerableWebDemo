@@ -1,15 +1,13 @@
 <?php
 require_once 'connection.php';
 
-/*
 if (!$_SESSION['loggedin']) {
     header("Location: /login.php");
     exit;
 }
-*/
 
 // Requesting self will crash the server
-if (!$_GET['page'] || strpos($_GET['page'], '../index') !== false) {
+if (!$_GET['page'] || $_GET['page'] == 'index' ||strpos($_GET['page'], '../index') !== false) {
     header("Location: /index.php?page=board");
     exit;
 }
