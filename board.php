@@ -12,8 +12,8 @@ if (isset($_POST['comment'])) {
     }
 }
 
-if (isset($_POST['clear'])) {
-    $sql = 'delete from comments';
+if (isset($_POST['clear']) && $_SESSION['status'] == 'admin') {
+    $sql = 'TRUNCATE TABLE comments';
     $stmt = $conn->prepare($sql);
 
     if ($stmt) {
@@ -30,14 +30,24 @@ if (isset($_POST['clear'])) {
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-    <h1>List of comments</h1>
+    <h1>Welcome, <? echo $_SESSION['username']; ?></h1>
+    <h2>Status : <? echo $_SESSION['status']; ?></h2>
+
+    <h2>List of comments</h1>
     <?php
+
+    if ($_SESSION['status'] == 'admin') {
+        echo '<form method="POST">';
+        echo    '<button type="submit">Clear comments</button>';
+        echo '</form>';
+    }
+
     $sql = 'SELECT * FROM comments';
     $result = mysqli_query($conn, $sql);
     
     if ($result) {
         while ($row = mysqli_fetch_row($result)) {
-            printf ("<p>%s</p>", $row[1]);
+            printf ('<p>%s</p>', $row[1]);
         }
     }
     ?>

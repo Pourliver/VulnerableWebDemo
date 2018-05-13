@@ -14,7 +14,8 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($count) {
         $row = mysqli_fetch_row($result);
         $_SESSION['loggedin'] = true;
-        #$_SESSION['admin'] = ($row[3] == 'admin' ? true : false);
+        $_SESSION['username'] = $row[1];
+        $_SESSION['status']   = $row[3];
         header('Location: /?page=index');
         exit;
     } else {
